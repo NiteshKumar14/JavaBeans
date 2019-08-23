@@ -5,6 +5,8 @@
  */
 package beans;
 
+import com.sun.org.omg.CORBA.ParameterDescription;
+import com.sun.org.omg.CORBA.ParameterMode;
 import java.beans.IntrospectionException;
 import java.beans.MethodDescriptor;
 import java.beans.PropertyDescriptor;
@@ -21,13 +23,17 @@ public class EmployeeBeansBeansInfo extends SimpleBeanInfo{
 
     @Override
     public MethodDescriptor[] getMethodDescriptors()  {
-        Method[] methods = EmployeeBeans.class.getMethods();
-        for (Method method : methods) {
-            System.out.println("****" + method.getName() + "****");
+       
+        try {
+            MethodDescriptor  mdDisplay = new MethodDescriptor(EmployeeBeans.class.getMethod("displayInfo"));
+           
+           MethodDescriptor arr[]={mdDisplay};
+           return arr;
+        } catch (NoSuchMethodException | SecurityException ex) {
+            Logger.getLogger(EmployeeBeansBeansInfo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        MethodDescriptor mdDisplay=new MethodDescriptor(methods[0]);
         
-        return new MethodDescriptor[]{mdDisplay};
+      return null;
         
     }
 
@@ -44,6 +50,7 @@ public class EmployeeBeansBeansInfo extends SimpleBeanInfo{
         }
      return null;
     }
+    
     
     
 }
