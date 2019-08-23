@@ -5,13 +5,10 @@
  */
 package beans;
 
-import com.sun.org.omg.CORBA.ParameterDescription;
-import com.sun.org.omg.CORBA.ParameterMode;
 import java.beans.IntrospectionException;
 import java.beans.MethodDescriptor;
 import java.beans.PropertyDescriptor;
 import java.beans.SimpleBeanInfo;
-import java.lang.reflect.Method;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
